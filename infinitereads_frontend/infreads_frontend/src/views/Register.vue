@@ -48,7 +48,7 @@
         try { 
           /* eslint-disable no-unused-vars */
 
-          var result = await axios.post("localhost:8080/api/v1/user", { username: this.username, email: this.email, password: this.password});
+          var result = await axios.post("http://localhost:8080/api/v1/user", { username: this.username, email: this.email, password: this.password});
          /* eslint-enable no-unused-vars */
 
          this.$router.push({ name: 'login' });

@@ -47,15 +47,15 @@
       }
     },
     methods: {
-    //   async login() {
-    //     try { 
-    //       var result = await axios.post("http://localhost:3000/cats/login", { name: this.name, password: this.password });
-    //       window.localStorage.setItem("catId", result.data.id);
-    //       this.$router.push({ name: 'home' });
-    //     } catch (e) {
-    //       alert("Credentiale incorecte!");
-    //     }
-    //   }
+      // async login() {
+      //   try { 
+      //     var result = await axios.post("http://localhost:3000/cats/login", { name: this.name, password: this.password });
+      //     window.localStorage.setItem("catId", result.data.id);
+      //     this.$router.push({ name: 'home' });
+      //   } catch (e) {
+      //     alert("Credentiale incorecte!");
+      //   }
+      // }
     }
   }
   /* eslint-enable no-unused-vars */

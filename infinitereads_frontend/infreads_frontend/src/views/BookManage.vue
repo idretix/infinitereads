@@ -22,28 +22,31 @@
 
     <v-text-field
       v-model="idU"
-      label="Id of book"
+      label="IdU of book"
       required
     ></v-text-field>
 
     <v-text-field
       v-model="title"
       label="New title of book"
+      required
     ></v-text-field>
     <v-text-field
       v-model="author"
       label="New author of book"
+      required
     ></v-text-field>
      <v-text-field
       v-model="isbn"
       label="New ISBN of book"
+      required
     ></v-text-field>
 
     <v-btn
       color="gray"
       class="mr-4"
      
-      @click="deleteB"
+      @click="updateB"
     >
       Update
     </v-btn>
@@ -80,13 +83,13 @@
     data() {
        return {
         id: "",
-         idU: "",
+        //  idU: "",
           title: "",
           author: "",
           isbn: "",
-          titleA: "",
-          authorA: "",
-          isbnA: ""
+          // titleA: "",
+          // authorA: "",
+          // isbnA: ""
       }
     },
      methods: {
@@ -94,7 +97,8 @@
         try { 
           /* eslint-disable no-unused-vars */
 
-          var result = await axios.delete("localhost:8080/api/v1/book", { id:this.id});
+          //var result = 
+          await axios.delete("http://localhost:8080/api/v1/book/"+this.id, { id:this.id});
           /* eslint-enable no-unused-vars */
 
          // this.$router.push({ name: 'login' });
@@ -106,7 +110,8 @@
         try { 
            /* eslint-disable no-unused-vars */
 
-          var result = await axios.put("localhost:8080/api/v1/book", { idU:this.idU,author:this.author,title:this.title,isbn:this.isbn});
+         // var result =
+           await axios.put("http://localhost:8080/api/v1/book", { id:this.idU,author:this.author,title:this.title,isbn:this.isbn});
             /* eslint-enable no-unused-vars */
 
          // this.$router.push({ name: 'login' });
@@ -119,7 +124,14 @@
 
                      /* eslint-disable no-unused-vars */
 
-          var result = await axios.post("localhost:8080/api/v1/book", {authorA:this.authorA,titleA:this.titleA,isbnA:this.isbnA});
+         // var result = 
+         if(this.titleA!=null)
+         {
+           if(this.authorA==null)
+           authorA="Anonymous";
+             await axios.post("http://localhost:8080/api/v1/book", {author:this.authorA,title:this.titleA,isbn:this.isbnA});
+
+         }
                     /* eslint-enable no-unused-vars */
 
         // this.$router.push({ name: 'login' });
@@ -132,3 +144,7 @@
     }
   }
 </script>
+
+
+
+
