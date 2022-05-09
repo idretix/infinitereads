@@ -12,6 +12,7 @@ public class Users {
     private String username;
     private String password;
     private String email;
+    private Boolean isAdmin;
 
     public Users() {
     }
@@ -59,6 +60,10 @@ public class Users {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
     }
 
     @Override

@@ -21,6 +21,9 @@ public class UsersService {
     public List<Users> getUsers(){
         return userRepository.findAll();
     }
+    public Optional<Users> getUserByUsernameAndPassword(String username, String password){
+        return userRepository.findUserByUsernameAndPassword(username,password);
+    }
 
     public void addNewUser(Users user) {
         Optional<Users> userOptional= userRepository.findUserByEmail(user.getEmail());

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(allowedHeaders = "*",origins = "*")
 @RestController
@@ -20,6 +21,11 @@ public class UserController {
     @GetMapping
     public List<Users> getUsers(){
         return userService.getUsers();
+    }
+
+    @GetMapping(path="/{username}/{password}")
+    public Optional<Users> getUsersByUsernameAndPassword(@PathVariable("username")String username,@PathVariable("password") String password ){
+        return userService.getUserByUsernameAndPassword(username,password);
     }
 
     @PostMapping

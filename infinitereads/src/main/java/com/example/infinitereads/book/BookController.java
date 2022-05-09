@@ -1,6 +1,5 @@
 package com.example.infinitereads.book;
 
-import com.example.infinitereads.book.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
