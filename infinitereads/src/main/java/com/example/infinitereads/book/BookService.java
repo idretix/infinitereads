@@ -23,6 +23,8 @@ public class BookService {
         return bookRepository.findAll();
     }
 
+    public Optional<Book> getBookByTitle(String title){return bookRepository.findBookByTitle(title);}
+
     public void addNewBook(Book book) {
         Optional<Book> userOptional= bookRepository.findBookByIsbn(book.getIsbn());
 

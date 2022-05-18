@@ -3,6 +3,9 @@
     ref="form"
     class="ml-6 mr-6"
   >
+       <div class="font-italic">
+    <h1>Login</h1>
+  </div>
     <v-text-field
       v-model="username"
       label="Userame"
@@ -47,15 +50,23 @@
       }
     },
     methods: {
-      // async login() {
-      //   try { 
-      //     var result = await axios.post("http://localhost:3000/cats/login", { name: this.name, password: this.password });
-      //     window.localStorage.setItem("catId", result.data.id);
-      //     this.$router.push({ name: 'home' });
-      //   } catch (e) {
-      //     alert("Credentiale incorecte!");
-      //   }
-      // }
+       async login() {
+         try { 
+           var result = await axios.get("http://localhost:8080/api/v1/user/"+this.username+"/"+this.password);
+           window.localStorage.setItem("userId", result.data.id);
+           window.localStorage.setItem("username",result.data.username);
+        //   window.localStorage.setItem("username", result.data.username);
+           window.localStorage.setItem("admin", result.data.admin);
+           console.log(window.localStorage.getItem("admin"))
+          if(window.localStorage.getItem("admin")==="true")
+           this.$router.push({ name: 'managebook' });
+          else     
+                 this.$router.push({ name: 'hello' });
+
+         } catch (e) {
+           alert("Credentiale incorecte!");
+         }
+       }
     }
   }
   /* eslint-enable no-unused-vars */

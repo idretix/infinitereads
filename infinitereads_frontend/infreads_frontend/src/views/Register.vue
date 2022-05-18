@@ -3,6 +3,9 @@
     ref="form"
     class="ml-8 mr-6"
   >
+       <div class="font-italic">
+    <h1>Register</h1>
+  </div>
     <v-text-field
       v-model="username"
       label="Username"
@@ -39,8 +42,8 @@
     data() {
        return {
         username: "",
-        password: "",
-        email: ""
+        email: "",
+        password: ""
       }
     },
      methods: {

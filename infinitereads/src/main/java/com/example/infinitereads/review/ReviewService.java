@@ -26,6 +26,12 @@ public class ReviewService {
     public List<Review> getReviewsByUserAuthorIdAndBookReviewedId(Long userId, Long bookId){
         return reviewRepository.findReviewsByUserAuthorIdAndBookReviewedId(userId,bookId);
     }
+    public List<Review> getReviewsByBookReviewedTitle(String title){
+        return reviewRepository.findReviewsByBookReviewedTitle(title);
+    }
+    public List<Review> getReviewsByUserAuthorUsername(String username){
+        return reviewRepository.findReviewsByUserAuthorUsername(username);
+    }
 
     public void addNewReview(Review review){
         reviewRepository.save(review);

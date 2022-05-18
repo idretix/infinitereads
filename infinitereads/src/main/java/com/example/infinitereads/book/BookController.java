@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(allowedHeaders = "*",origins = "*")
 @RestController
@@ -19,6 +20,11 @@ public class BookController {
 
     @GetMapping
     public List<Book> getBooks(){return bookService.getBooks();}
+
+    @GetMapping(path="/{title}")
+    public Optional<Book> getBookByTitle(@PathVariable("title")String title){
+        return bookService.getBookByTitle(title);
+    }
 
     @PostMapping
     public void addBook(@RequestBody Book book){

@@ -23,6 +23,11 @@ public class UserController {
         return userService.getUsers();
     }
 
+    @GetMapping(path = "/{id}")
+    public Optional<Users> getUsers(@PathVariable("id")Long id){
+        return userService.getUserById(id);
+    }
+
     @GetMapping(path="/{username}/{password}")
     public Optional<Users> getUsersByUsernameAndPassword(@PathVariable("username")String username,@PathVariable("password") String password ){
         return userService.getUserByUsernameAndPassword(username,password);
@@ -49,5 +54,6 @@ public class UserController {
     ){
         userService.updateUser(user.getId(),user.getUsername(),user.getPassword(), user.getEmail());
     }
+
 
 }

@@ -29,6 +29,14 @@ public class ReviewController {
     public List<Review> getReviewsByUserId(@PathVariable("userId")Long userId,@PathVariable("bookId")Long bookId){
         return reviewService.getReviewsByUserAuthorIdAndBookReviewedId(userId,bookId);
     }
+    @GetMapping(path = "/title/{title}")
+    public List<Review> getReviewsByBookReviewedTitle(@PathVariable("title")String title){
+        return reviewService.getReviewsByBookReviewedTitle(title);
+    }
+    @GetMapping(path = "/userauthor/{username}")
+    public List<Review> getReviewsByUserAuthorUsername(@PathVariable("username")String username){
+        return reviewService.getReviewsByUserAuthorUsername(username);
+    }
     @PostMapping
     public void writeNewReview(@RequestBody Review review){reviewService.addNewReview(review);}
 

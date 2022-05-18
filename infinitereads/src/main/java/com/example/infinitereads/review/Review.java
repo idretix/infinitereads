@@ -18,10 +18,10 @@ public class Review {
     float rating;
     String text;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private Users userAuthor;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "bookId", referencedColumnName = "id")
     private Book bookReviewed;
 

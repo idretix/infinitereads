@@ -3,6 +3,36 @@
     ref="form"
     class="ml-8 mr-6"
   >
+       <div class="font-italic">
+    <h1>Admin's Room</h1>
+  </div>
+      <v-simple-table dense>
+      <template v-slot:default>
+        <thead>
+          <tr>
+            <th class="text-left">Id</th>
+            <th class="text-left">Title</th>
+            <th class="text-left">Author</th>
+            <th class="text-left">ISBN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in allBooks" :key="item.id">
+            <td>{{ item.id }}</td>
+            <td>{{ item.title}}</td>
+            <td>{{ item.author }}</td>
+            <td>{{ item.isbn }}</td>
+          </tr>
+        </tbody>
+      </template>
+    </v-simple-table>
+      <v-btn
+      color="purple"
+      class="mr-4"
+      @click="findAllBooks"
+    >
+      See Books
+    </v-btn>
     <v-text-field
       v-model="id"
       label="Id of book to delete"
@@ -82,14 +112,11 @@
     name: 'BookManage',
     data() {
        return {
-        id: "",
-        //  idU: "",
-          title: "",
-          author: "",
-          isbn: "",
-          // titleA: "",
-          // authorA: "",
-          // isbnA: ""
+      id:"",
+      title:"",
+      author:"",
+      isbn:"",
+      allBooks: [],
       }
     },
      methods: {
@@ -138,7 +165,17 @@
         } catch (e) {
           /*empty*/
         }
+      },
+      
+    async findAllBooks() {
+      try {
+          var resultBooks = await axios.get("http://localhost:8080/api/v1/book");
+          this.allBooks = resultBooks.data;
+         // window.localStorage.setItem("id", books.data.id);
+      } catch (e) {
+          alert("Eroare");
       }
+    }
         //
 
     }

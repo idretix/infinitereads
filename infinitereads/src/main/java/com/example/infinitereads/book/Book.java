@@ -13,6 +13,7 @@ public class Book {
     private String title;
     private String author;
     private String isbn;
+    private Float rating;
 
     public Book(Long id, String title, String author, String isbn) {
         this.id = id;
@@ -20,6 +21,7 @@ public class Book {
         this.author = author;
         this.isbn = isbn;
     }
+
 
     public Book(String title, String author, String isbn) {
         this.title = title;

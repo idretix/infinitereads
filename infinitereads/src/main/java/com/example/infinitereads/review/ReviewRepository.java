@@ -13,5 +13,7 @@ public interface ReviewRepository extends JpaRepository<Review,Long> {
     List<Review> findReviewsByBookReviewedId(Long bookId);
     List<Review> findReviewsByUserAuthorId(Long userId);
     List<Review> findReviewsByUserAuthorIdAndBookReviewedId(Long userId, Long bookId);
-
+    List<Review> findReviewsByBookReviewedTitle(String title);
+    List<Review> findReviewsByUserAuthorUsername(String username);
+    Double findAverageRatingByBookReviewedId(Long bookId);
 }
